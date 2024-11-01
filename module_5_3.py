@@ -33,19 +33,20 @@ class House:
         return self.number_of_floors
 
     def __add__(self, other):
-        self.number_of_floors += other
-        return self.__str__()
+        if isinstance(other, int):
+            return (self.number_of_floors + other)
+        return NotImplemented
 
     def __iadd__(self, other):
-        self.number_of_floors += other
-        return self.number_of_floors
+        return self.__add__(other)
+
 
     def __radd__(self, other):
-        self.number_of_floors += other
-        return self.__str__()
+        return self.__add__(other)
+
 
     def __eq__(self, other):
-        return self.__str__(), other
+        return self.__str__() == other
 
 
 h1 = House('ЖК Эльбрус', 10)
@@ -58,7 +59,7 @@ print(h1 == h2) # __eq__
 
 h1 = h1 + 10 # __add__
 print(h1)
-print(h1 == h2, '/' * 15)
+print(h1 == h2)
 
 h1 += 10 # __iadd__
 print(h1)
@@ -66,8 +67,8 @@ print(h1)
 h2 = 10 + h2 # __radd__
 print(h2)
 
-print(h1 > h2, '/' * 15) # __gt__
+print(h1 > h2) # __gt__
 print(h1 >= h2) # __ge__
 print(h1 < h2) # __lt__
 print(h1 <= h2) # __le__
-print(h1 != h2, '/' * 15) # __ne__
+print(h1 != h2) # __ne__
