@@ -37,7 +37,7 @@ class House:
         return self.__str__()
 
     def __iadd__(self, other):
-        self.number_of_floors += str(other)
+        self.number_of_floors += other
         return self.number_of_floors
 
     def __radd__(self, other):
