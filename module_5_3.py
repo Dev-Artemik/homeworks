@@ -14,9 +14,6 @@ class House:
     def __lt__(self, other):
         return self.number_of_floors < other
 
-    def __str__(self):
-        return 'Название: ' + str(self.name) + ', кол-во этажей: ' + str(self.number_of_floors)
-
     def __le__(self, other):
         return self.number_of_floors <= other
 
@@ -34,7 +31,7 @@ class House:
 
     def __add__(self, other):
         if isinstance(other, int):
-            return (self.number_of_floors + other)
+            return self.number_of_floors + other
         return NotImplemented
 
     def __iadd__(self, other):
@@ -44,9 +41,11 @@ class House:
     def __radd__(self, other):
         return self.__add__(other)
 
-
     def __eq__(self, other):
-        return self.__str__() == other
+        return self.number_of_floors == other
+
+    def __str__(self):
+        return 'Название: ' + str(self.name) + ', кол-во этажей: ' + str(self.number_of_floors)
 
 
 h1 = House('ЖК Эльбрус', 10)
