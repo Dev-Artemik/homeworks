@@ -31,7 +31,7 @@ class House:
 
     def __add__(self, other):
         if isinstance(other, int):
-            return self.number_of_floors + other
+            return House(self.name, self.number_of_floors + other)  # Возвращаем новый объект House
         return NotImplemented
 
     def __iadd__(self, other):
